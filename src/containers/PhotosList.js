@@ -9,12 +9,12 @@ class PhotoList extends Component {
 
   render() {
     const { photos, isLoading, error } = this.props;
-    console.log('isLoading now', isLoading)
+    console.log('isLoading now', error)
     return (
       <div>
         <h3>Search results</h3>
         { isLoading && <img src={ loader } alt="loader" /> }
-        { error && error.msg && <p>{error.msg}</p>}
+        { !isLoading && error && error.msg && <h1 style={{color:'red', fontSize: '40px'}}>{error.msg}</h1>}
         {
          !isLoading && photos.map( (photo, index) => {
             return(
@@ -35,7 +35,7 @@ const mapStateToProps = (state) => {
   return {
     photos: state.photos,
     isLoading: state.loading,
-    error: state.error.msg
+    error: state.error
   }
 }
 

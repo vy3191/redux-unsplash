@@ -35,11 +35,15 @@ export const getPhotos = (query) => {
     })
     .then(res => res.json())
     .then(data => {
+        console.log('data', data)
         setTimeout(dispatch(fetchPhotos(data.results)), 2000)
-    })
-    .catch( err => {
-      console.log('error', err)
-      dispatch(failPhotos({msg: 'Not Fount'}))
+        if(data.results.length === 0) {
+            dispatch(failPhotos({msg: 'Not Found'}))
+          }
+        })
+        .catch( err => {
+          console.log('error', err)
+          dispatch(failPhotos({msg: 'Not Found'}))
     })
   }
 };
