@@ -1,4 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { getPhotos } from '../actions'
 
 class componentName extends Component {
   constructor(props) {
@@ -43,4 +46,16 @@ class componentName extends Component {
   }
 }
 
-export default componentName;
+Search.propTypes = {
+  getPhotos: PropTypes.func
+}
+
+const mapDispatchToProps = {
+  return {
+    getPhotos: function(query) {
+      dispatch(getPhotos(query))
+    }
+  }
+}
+
+export default connect(null, mapDispatchToProps)(componentName);

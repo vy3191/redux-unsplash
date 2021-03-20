@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getPhotos } from '../actions'
+
 
 class PhotoList extends Component {
 
@@ -12,6 +13,10 @@ class PhotoList extends Component {
       </div>
     );
   }
+}
+
+PhotoList.propTypes = {
+  photos: PropTypes.array
 }
 
 const mapStateToProps = (state) => {
