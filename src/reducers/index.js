@@ -1,3 +1,4 @@
+import { bindActionCreators } from 'redux';
 import { PENDING_FETCH_PHOTOS, 
   SUCCESS_FETCH_PHOTOS,
   REJECTED_FETCH_PHOTOS
@@ -10,11 +11,34 @@ const initialState = {
   error: {}
 }
 
-const reducer = () => {
-  
-  return {
+const reducer = (state=initialState, action) => {
+  switch(action.type) {
+    case PENDING_FETCH_PHOTOS:
+      return {
+        ...state,
+        loading: true,
+        error: {}
+      }
+    case SUCCESS_FETCH_PHOTOS:
+      return {
+        ...state,
+        loading: false,
+        error: {},
+        photos: action.payload
+      }  
+    case REJECTED_FETCH_PHOTOS:
+      return {
+        ...state,
+        photos: [],
+        loading: false,
+        error: action.payload
+      }   
 
+    default:
+      return state;
   }
+  
+  
 }
 
 export default reducer;
