@@ -9,7 +9,6 @@ class PhotoList extends Component {
 
   render() {
     const { photos, isLoading, error } = this.props;
-    console.log('isLoading now', error)
     return (
       <div>
         <h3>Search results</h3>
