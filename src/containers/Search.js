@@ -21,7 +21,7 @@ class Search extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    getPhotos(this.state.text)
+    this.props.getPhotos(this.state.text)
     this.setState({
       text: ""
     })

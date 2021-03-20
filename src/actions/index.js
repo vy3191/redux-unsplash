@@ -25,9 +25,7 @@ const failPhotos = (payload) => {
 
 
 export const getPhotos = (query) => {  
-  console.log('before return query', query)
   return (dispatch) => {
-    console.log('after return query>>>>', query)
     pendingPhotos();
     fetch(`https://api.unsplash.com/search/photos?page=1&query=${query}`, {
         method: 'GET',
@@ -37,7 +35,6 @@ export const getPhotos = (query) => {
     })
     .then(res => res.json())
     .then(data => {
-        console.log('data>>>>>>', data)
         dispatch(fetchPhotos(data.results))
     })
     .catch( err => dispatch(failPhotos(err)))
