@@ -35,7 +35,7 @@ export const getPhotos = (query) => {
     })
     .then(res => res.json())
     .then(data => {
-        dispatch(fetchPhotos(data.results))
+        setTimeout(dispatch(fetchPhotos(data.results)), 2000)
     })
     .catch( err => {
       console.log('error', err)

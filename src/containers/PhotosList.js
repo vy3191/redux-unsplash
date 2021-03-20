@@ -16,7 +16,7 @@ class PhotoList extends Component {
         { isLoading && <img src={ loader } alt="loader" /> }
         { error && error.msg && <p>{error.msg}</p>}
         {
-          photos.map( (photo, index) => {
+         !isLoading && photos.map( (photo, index) => {
             return(
               <Photo photo={photo} key={index} />
             )
