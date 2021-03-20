@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Search from './Containers/Search';
-import PhotoList from './Containers/PhotosList';
+import Search from './containers/Search';
+import PhotoList from './containers/PhotosList';
 import './App.css';
 
 class App extends Component {
