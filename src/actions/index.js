@@ -26,7 +26,7 @@ const failPhotos = (payload) => {
 
 export const getPhotos = (query) => {  
   return (dispatch) => {
-    pendingPhotos();
+    dispatch(pendingPhotos());
     fetch(`https://api.unsplash.com/search/photos?page=1&query=${query}`, {
         method: 'GET',
         headers: {
@@ -37,6 +37,9 @@ export const getPhotos = (query) => {
     .then(data => {
         dispatch(fetchPhotos(data.results))
     })
-    .catch( err => dispatch(failPhotos(err)))
+    .catch( err => {
+      console.log('error', err)
+      dispatch(failPhotos({msg: 'Not Fount'}))
+    })
   }
 };
