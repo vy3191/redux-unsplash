@@ -23,7 +23,7 @@ const failPhotos = (payload) => {
 }
 
 
-const getPhotos = (query) => {
+export const getPhotos = (query) => {
 
   return (dispatch, getState) => {
     pendingPhotos();
@@ -34,5 +34,3 @@ const getPhotos = (query) => {
   }
 
 };
-
-export default getPhotos;
