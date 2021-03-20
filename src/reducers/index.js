@@ -1,4 +1,4 @@
-import { bindActionCreators } from 'redux';
+
 import { PENDING_FETCH_PHOTOS, 
   SUCCESS_FETCH_PHOTOS,
   REJECTED_FETCH_PHOTOS
@@ -23,8 +23,8 @@ const reducer = (state=initialState, action) => {
       return {
         ...state,
         loading: false,
-        error: {},
-        photos: action.payload
+        photos: action.payload,
+        error: {}
       }  
     case REJECTED_FETCH_PHOTOS:
       return {

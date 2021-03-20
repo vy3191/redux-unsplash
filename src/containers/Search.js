@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getPhotos } from '../actions'
 
-class componentName extends Component {
+class Search extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -21,7 +21,7 @@ class componentName extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.text);
+    getPhotos(this.state.text)
     this.setState({
       text: ""
     })
@@ -50,7 +50,7 @@ Search.propTypes = {
   getPhotos: PropTypes.func
 }
 
-const mapDispatchToProps = {
+const mapDispatchToProps = (dispatch) => {
   return {
     getPhotos: function(query) {
       dispatch(getPhotos(query))
@@ -58,4 +58,4 @@ const mapDispatchToProps = {
   }
 }
 
-export default connect(null, mapDispatchToProps)(componentName);
+export default connect(null, mapDispatchToProps)(Search);

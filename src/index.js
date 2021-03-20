@@ -7,11 +7,13 @@ import App from './App';
 import reducer from './reducers';
 import './index.css';
 
-const middleWare = applyMiddleware(reduxThunk);
-const createStoreWithMiddleware = middleWare(createStore);
-const store = createStoreWithMiddleware(
-  reducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() )
+const store = createStore(reducer, applyMiddleware(reduxThunk));
+
+// const middleWare = applyMiddleware(reduxThunk);
+// const createStoreWithMiddleware = middleWare(createStore);
+// const store = createStoreWithMiddleware(
+//   reducer,
+//   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() )
 
 
 ReactDOM.render(

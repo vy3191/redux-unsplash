@@ -2,6 +2,7 @@ export const PENDING_FETCH_PHOTOS = 'PENDING_FETCH_PHOTOS';
 export const SUCCESS_FETCH_PHOTOS = 'SUCCESS_FETCH_PHOTOS';
 export const REJECTED_FETCH_PHOTOS = 'REJECTED_FETCH_PHOTOS';
 
+
 const pendingPhotos = () => {
   return {
     type: PENDING_FETCH_PHOTOS
@@ -23,14 +24,22 @@ const failPhotos = (payload) => {
 }
 
 
-export const getPhotos = (query) => {
-
-  return (dispatch, getState) => {
+export const getPhotos = (query) => {  
+  console.log('before return query', query)
+  return (dispatch) => {
+    console.log('after return query>>>>', query)
     pendingPhotos();
-    fetch('url')
-      .then(res => res.json())
-      .then(data => fetchPhotos(data))
-      .catch( err => failPhotos(err))
+    fetch(`https://api.unsplash.com/search/photos?page=1&query=${query}`, {
+        method: 'GET',
+        headers: {
+          Authorization: `Client-ID ${process.env.REACT_APP_ACCESS_KEY}`,
+        }
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log('data>>>>>>', data)
+        dispatch(fetchPhotos(data.results))
+    })
+    .catch( err => dispatch(failPhotos(err)))
   }
-
 };
