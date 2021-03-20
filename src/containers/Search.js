@@ -6,6 +6,8 @@ class componentName extends Component {
     this.state = {
       text: ""
     }
+    this.handleInput = this.handleInput.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   handleInput(event) {
@@ -26,7 +28,7 @@ class componentName extends Component {
     return (
       <div>
         <h2>Start your search here</h2>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <label>Name of the pic</label>
           <input 
             type="text"
